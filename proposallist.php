@@ -12,15 +12,17 @@
 	ini_set('display_errors', 1);
 
     $mysqli = new mysqli("localhost", "lind6441", "kett6441", "lind6441_group");
-    $result = $mysqli->query("SELECT * AS comment FROM comments");
+    $result = $mysqli->query("SELECT * FROM proposals");
     if (!$result)
     {
         throw new Exception("Database Error [{$result->database->errno}] {$result->database->error}");
     }
     else 
     {
-    	$row = $result->fetch_assoc();
-    	echo htmlentities($row['comment']);
+      while($row = $result->fetch_assoc())
+      {
+    	 echo $row["title"] . "<br/>";
+      }
     }
     
 	// phpinfo();
