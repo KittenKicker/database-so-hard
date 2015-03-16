@@ -19,12 +19,12 @@
           <a class="navbar-brand" href="#">Kettering Proposal System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" action="authentication.php" method="POST">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" placeholder="Email" class="form-control" name="email">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" class="form-control" name="password">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
@@ -42,31 +42,15 @@
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <?php include 'proposallist.php'; ?>
-        <!-- <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div> -->
-      </div>
-
-      <hr>
-
-      <footer>
+      <?php include 'proposallist.php'; ?>
+      <!-- <hr> -->
+      <?php
+      var_dump($_SESSION);
+      // var_dump($_SESSION["user_record"]);
+      ?>
+      <!-- <footer>
         <p>&copy; Company 2014</p>
-      </footer>
+      </footer> -->
     </div> <!-- /container -->
 
 
