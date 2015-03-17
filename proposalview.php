@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <?php session_start(); ?>
-  <title>
-    Proposal Viewer
-  </title>
-</head>
-<body>
 <?php
 error_reporting(E_ALL);
           ini_set('display_errors', 1);
@@ -98,5 +86,3 @@ error_reporting(E_ALL);
     </ul>
   </div>
 </div>
-</body>
-</html>

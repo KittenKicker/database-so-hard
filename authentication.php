@@ -18,5 +18,5 @@ else
 	// $_SESSION["user_record"] = $row;
 }
 
-header("Location: http://webtech.kettering.edu/~holl4332/databaseproject/");
+header("Location: http://webtech.kettering.edu/~lind6441/proposal-database-project/");
 ?>
