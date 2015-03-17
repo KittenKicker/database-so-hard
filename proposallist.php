@@ -11,9 +11,9 @@
 <div class="container">
     <div class="row">
         <h1>
-            Kettering Proposals
+            Proposals
         </h1>
-        <hr/>
+        <!-- <hr/> -->
         <br/>
         <ul class="list-group">
         <?php
@@ -31,7 +31,7 @@
             {
               while($row = $result->fetch_assoc())
               {
-            	 echo "<li class='list-group-item'><a href='proposalview.php?proposal=" . $row["id"] . "'><strong>Proposal Title: </strong>" . $row["title"] . "</a><br/><strong>Submitted By: </strong>" . $row["fname"] . " " . $row["lname"] . "<br/><strong>Date: </strong>" . $row["date_created"] . "</li>";
+            	 echo "<li class='list-group-item'><a href='index.php?proposal=" . $row["id"] . "'><strong>Proposal Title: </strong>" . $row["title"] . "</a><br/><strong>Submitted By: </strong>" . $row["fname"] . " " . $row["lname"] . "<br/><strong>Date: </strong>" . $row["date_created"] . "</li>";
               }
             }
             

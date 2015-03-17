@@ -7,8 +7,9 @@
 <body>
 <?php
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
   $mysqli = new mysqli("localhost", "lind6441", "kett6441", "lind6441_group");
+  $sql = "INSERT INTO proposals (title, description, posted_by_id) VALUES ('" . $_POST["title"] ."', '" . $_POST["description"] . "', 1)";
   
   if($mysqli->query($sql) === TRUE)
   {
@@ -16,11 +17,11 @@ ini_set('display_errors', 1);
   }
   else
   {
-     echo "Record not added...";
+     echo "An error occurred. Record not added...";
   }
   $mysqli->close();
 
 ?>
-<br/><a href="index.php">Go back to form</a>
+<br/><a href="index.php">Go back to homepage</a>
 </body>
 </html>

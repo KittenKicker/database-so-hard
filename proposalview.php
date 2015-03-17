@@ -21,7 +21,7 @@ error_reporting(E_ALL);
         <label for="postedby">Submitted By: </label><input class="form-control" readonly id="postedby" name="postedby" type="text" value="<?php echo $row["fname"] . " " . $row["lname"]?>">
       </div>
       <div class="form-group">
-        <label for="date">Date Submitted: </label><input class="form-control" readonly type="date" id="date" name="date" value="<?php echo $row["date_created"]?>">
+        <label for="date">Date Submitted: </label><input class="form-control" readonly type="datetime" id="date" name="date" value="<?php echo $row["date_created"]?>">
       </div>
       <!--TODO: Update this to use permission for editing" -->
       <div class="form-group">
