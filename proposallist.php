@@ -31,7 +31,7 @@
             {
               while($row = $result->fetch_assoc())
               {
-            	 echo "<li class='list-group-item'><a href='proposalview.php?proposal=" . $row["id"] . "'>" . $row["title"] . "</a> Submitted By: " . $row["fname"] . " " . $row["lname"] . ", " . $row["date_created"] . "</li>";
+            	 echo "<li class='list-group-item'><a href='proposalview.php?proposal=" . $row["id"] . "'><strong>Proposal Title: </strong>" . $row["title"] . "</a><br/><strong>Submitted By: </strong>" . $row["fname"] . " " . $row["lname"] . "<br/><strong>Date: </strong>" . $row["date_created"] . "</li>";
               }
             }
             

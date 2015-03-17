@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <?php session_start(); ?>
   <title>
     Proposal Viewer
   </title>
@@ -17,7 +18,7 @@ error_reporting(E_ALL);
   $result = $mysqli->query($sql);
   $row = $result->fetch_assoc();
 ?>
-  <form id="myform" action="eventedit.php?event='<?php echo $_GET["event"]?>'" method="post" enctype="multipart/form-data">
+  <form id="myform" action="proposaledit.php?proposal=<?php echo $_GET["proposal"]?>" method="post">
   <div class="container">
     <div class="row">
       <h1> <?php echo $row["title"] ?></h1>
@@ -37,13 +38,18 @@ error_reporting(E_ALL);
       <!--TODO: Update this to use permission for editing" -->
       <div class="form-group">
         <label for="status">Status :</label>
-        <select class="form-control" id="status" name="status" value="<?php echo $row["status"]?>">
-          <option value="Pending">Pending</option>
-          <option value="Approved">Approved</option>
-          <option value="Denied">Denied</option>
+        <select class="form-control" id="status" name="status" <?php if($_SESSION["statusupdate"] != 2) { echo "readonly";}?>>
+          <option <?php if($row["status"] == "Pending"){ echo "checked"; }?> value="Pending">Pending</option>
+          <option <?php if($row["status"] == "Approved"){ echo "checked"; }?> value="Approved">Approved</option>
+          <option <?php if($row["status"] == "Denied"){ echo "checked"; }?> value="Denied">Denied</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-default">Update Status</button>
+      <?php
+      if($_SESSION["statusupdate"] == 2)
+      {
+        echo "<button type='submit' class='btn btn-default'>Update Status</button>";
+      }
+      ?>
       <!--End Todo -->
     </div>
   </div>
@@ -53,10 +59,33 @@ error_reporting(E_ALL);
   <div class="row">
     <h3>Comments</h3>
     <hr>
+    <form id="comments" method="POST">
+      <div class="form-group">
+      <label for="comment">Write Comment: </label>
+      <textarea name="comment" id="comment" class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-default">Add Comment</button>
+
+    </form>
+    <br/>
+    <br/>
     <ul class="list-group">
       <?php 
-        error_reporting(E_ALL);
+      error_reporting(E_ALL);
         ini_set('display_errors', 1);
+        if(isset($_SESSION["uid"]))
+        {
+          if(isset($_POST["comment"]))
+          {
+            $sql = "INSERT INTO comments (proposal_id, user_id, comment_body) VALUES (" . $_GET["proposal"] . "," . $_SESSION["uid"] . ",'" . $_POST["comment"] . "')";
+          }
+          $mysqli->query($sql);
+        }
+        else
+        {
+          echo "please sign in<br/>";
+        }
+        
         $sql = "SELECT U.fname, U.lname, C.comment_body, C.date_created FROM comments AS C INNER JOIN proposals AS P ON P.id = C.proposal_id INNER JOIN users AS U ON U.id = C.user_id WHERE C.proposal_id = " . $_GET["proposal"] . " ORDER BY C.date_created DESC";
 
         $result = $mysqli->query($sql);

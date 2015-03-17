@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">a
   <head>
     <?php include 'head.html'; ?>
   </head>
